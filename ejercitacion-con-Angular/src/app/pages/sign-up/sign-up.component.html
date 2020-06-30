@@ -6,10 +6,11 @@
       </div>
       <div class="lg:w-2/6 md:w-1/2 bg-gray-200 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
         <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Reguistrate</h2>
-        <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mb-4" placeholder="Full Name" type="text">
-        <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mb-4" placeholder="Email" type="email">
-        <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mb-4" placeholder="Password" type="password">
-        <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Reguistrate</button>
+        <input #inputfullname class="bg-white rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mb-4" placeholder="Full Name" type="text" [(ngModel)]="generarJSON.name_person">
+        <input #inputlastname class="bg-white rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mb-4" placeholder="Last Name" type="text" [(ngModel)]="generarJSON.lastname_person">
+        <input #inputemail class="bg-white rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mb-4" placeholder="Email" type="email" [(ngModel)]="generarJSON.email_person">
+        <input #inputpasswork class="bg-white rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mb-4" placeholder="Password" type="password" [(ngModel)]="generarJSON.passwork_person">
+        <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg" (click)="ReguistrarUsuario()">Reguistrate</button> <!-- (click)="ReguistrarUsuario({fullname: inputfullname, lastname: inputlastname, email: inputemail, passwork: inputpasswork})" -->
         <p class="text-xs text-gray-500 mt-3">Si ya contienes una cuenta <a class="cursor-pointer text-blue-500" routerLink="/sign-in" routerLinkActive="active">inicia secion</a> para comenzar a realizar tareas.</p>
       </div>
     </div>

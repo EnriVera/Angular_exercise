@@ -5,9 +5,9 @@
         <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep.</p>
       </div>
       <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:px-0">
-        <input class="flex-grow w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mr-4 mb-4 sm:mb-0" placeholder="Full Name" type="text">
-        <input class="flex-grow w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mr-4 mb-4 sm:mb-0" placeholder="Email" type="email">
-        <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg" routerLink="/sign-up" routerLinkActive="active">Comenzar</button>
+        <input #input_full_name class="flex-grow w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mr-4 mb-4 sm:mb-0" placeholder="Full Name" type="text">
+        <input #input_email class="flex-grow w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mr-4 mb-4 sm:mb-0" placeholder="Email" type="email">
+        <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg" (click)="ValidarCampos({fullName: input_full_name, email: input_email})" >Comenzar</button>
       </div>
     </div>
   </section>

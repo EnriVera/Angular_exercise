@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
 import { router } from './router/config-router';
+import { ServicePersonService } from './service/service-person/service-person.service';
 
 
 
@@ -23,7 +24,7 @@ import { router } from './router/config-router';
     ComponentsModule,
     PagesModule
   ],
-  providers: [],
+  providers: [ServicePersonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
