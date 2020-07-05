@@ -9,13 +9,15 @@ import { RouterModule } from '@angular/router';
 import { router } from '../router/config-router';
 import { SweeNotification } from '../resource/notification';
 import { ServicePersonService } from '../service/service-person/service-person.service';
+import { HomeTaskComponent } from './home-task/home-task.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 
 @NgModule({
-  declarations: [HomeComponent, SignInComponent, SignUpComponent],
+  declarations: [HomeComponent, SignInComponent, SignUpComponent, HomeTaskComponent],
   providers:[ServicePersonService],
-  imports:[CommonModule, RouterModule.forRoot(router), FormsModule],
+  imports:[ ComponentsModule ,CommonModule, RouterModule.forRoot(router), FormsModule],
   exports: [
     CommonModule,
     SignInComponent,

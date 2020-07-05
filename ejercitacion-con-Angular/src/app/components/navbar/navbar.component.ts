@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  public habilitar: boolean = false;
+  constructor(public router:Router, public route: ActivatedRoute) {
+
+    router.events.forEach((event) => {
+      if(event instanceof NavigationStart) {
+        event.url == '/home-task' ? this.habilitar = true : this.habilitar = false;
+      }
+    });
+  }
 
   ngOnInit(): void {
   }
+
 
 }

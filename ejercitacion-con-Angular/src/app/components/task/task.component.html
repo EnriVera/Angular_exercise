@@ -1,0 +1,13 @@
+<div class="lg:w-2/3 w-full mx-auto overflow-auto flex flex-wrap md:flex-row items-center">
+    <div class=" border border-gray-100 flex hover:text-gray-900 rounded hover:border-gray-300 py-1 px-3  w-full items-center">
+        <svg (click)="ClickTarea()" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5 mx-5 my-1 cursor-pointer" viewBox="0 0 24 24">
+            <circle class="text-gray-700" *ngIf="!this.validar" cx="12" cy="12" r="10"></circle>
+
+            <path class="text-green-400" *ngIf="this.validar" d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline class="text-green-600" *ngIf="this.validar" points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <input class="text-gray-700 p-1 flex items-center w-4/5 border border-transparent rounded focus:outline-none focus:border-gray-200" type="text" value="Hola como andas">
+    </div>
+</div>
+
+<router-outlet></router-outlet>
