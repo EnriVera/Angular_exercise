@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SweeNotification } from 'src/app/resource/notification';
 import { ServicePersonService } from 'src/app/service/service-person/service-person.service';
+import { Person } from 'src/app/Models/Person';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,22 +12,8 @@ import { ServicePersonService } from 'src/app/service/service-person/service-per
 export class SignUpComponent implements OnInit {
 
   public ValoresDelLink = {fullname: '', email: ''}
-  private DatosIngresados = {fullname: '', lastname: '', email: '', passwork: ''}
-
- /* private fullname: String;
-  private lastname: String;
-  private email: String;
-  private passwork: String;*/
+  person: Person = new Person();
   private sweenotificacion = new SweeNotification;
-  public generarJSON = {
-    "name_person": '',
-    "lastname_person": '',
-    "email_person": '',
-    "passwork_person": '',
-    "image_person": null,
-    "description_person": null,
-    "id_task2": null
-  };
 
   constructor(private routers: Router, private router: ActivatedRoute, public serviceperson: ServicePersonService, public valor_router: Router) { }
 
@@ -36,17 +23,17 @@ export class SignUpComponent implements OnInit {
     this.router.paramMap.subscribe(valor => {
       if(valor.has('fullname') && valor.has('email'))
       {
-        this.generarJSON.name_person = valor.get('fullname');
-        this.generarJSON.email_person = valor.get('email');
+        this.person.Nombre = valor.get('fullname');
+        this.person.Email = valor.get('email');
       }
     });
   }
 
   ReguistrarUsuario(){
-    if(this.generarJSON.name_person != '' && this.generarJSON.email_person != '' && this.generarJSON.lastname_person != ''
-      && this.generarJSON.passwork_person != '' && this.generarJSON.email_person.includes('@gmail.com'))
+    if(this.person.Nombre != '' && this.person.Email != '' && this.person.Apellido != ''
+      && this.person.Passwork != '' && this.person.Email.includes('@gmail.com'))
       {
-        this.serviceperson.Agregar_Person(this.generarJSON).subscribe(
+        this.serviceperson.Agregar_Person(this.person).subscribe(
           valor => {
             localStorage.removeItem('Usuario')
             localStorage.setItem('Usuario', JSON.stringify(valor))

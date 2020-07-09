@@ -9,8 +9,7 @@ import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
 import { router } from './router/config-router';
 import { ServicePersonService } from './service/service-person/service-person.service';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,8 @@ import { ServicePersonService } from './service/service-person/service-person.se
     RouterModule.forRoot(router),
     FormsModule,
     ComponentsModule,
-    PagesModule
+    PagesModule,
+    BrowserAnimationsModule
   ],
   providers: [ServicePersonService],
   bootstrap: [AppComponent]

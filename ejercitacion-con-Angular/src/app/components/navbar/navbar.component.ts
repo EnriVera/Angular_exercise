@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   public habilitar: boolean = false;
   constructor(public router:Router, public route: ActivatedRoute) {
-
+    
     router.events.forEach((event) => {
       if(event instanceof NavigationStart) {
         event.url == '/home-task' ? this.habilitar = true : this.habilitar = false;

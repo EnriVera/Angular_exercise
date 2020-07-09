@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicePersonService } from 'src/app/service/service-person/service-person.service';
 import { Router } from '@angular/router';
 import { SweeNotification } from 'src/app/resource/notification';
+import { Person } from 'src/app/Models/Person';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,10 +10,8 @@ import { SweeNotification } from 'src/app/resource/notification';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-  public generarJSON = {
-    "email_person": '',
-    "passwork_person": ''
-  };
+
+  person: Person = new Person();
   private sweenotificacion = new SweeNotification;
 
   constructor(public serviceperson: ServicePersonService, public valor_router: Router) { }
@@ -21,9 +20,9 @@ export class SignInComponent implements OnInit {
   }
 
   IniciarUsuario(){
-    if(this.generarJSON.email_person != '' && this.generarJSON.passwork_person != '' && this.generarJSON.email_person.includes('@gmail.com'))
+    if(this.person.Email != '' && this.person.Passwork != '' && this.person.Email.includes('@gmail.com'))
       {
-        this.serviceperson.ObtnerPerson(this.generarJSON).subscribe(
+        this.serviceperson.ObtnerPerson(this.person).subscribe(
           valor => {
             localStorage.removeItem('Usuario')
             localStorage.setItem('Usuario', JSON.stringify(valor))

@@ -11,12 +11,11 @@ import { TaskComponent } from '../components/task/task.component';
 const appRoutes: Routes = [
     { path: 'sign-in', component: SignInComponent },
     { path: 'sign-up', component: SignUpComponent },
-    { path: 'task', component: TaskComponent },
     { path: 'sign-up/data/:fullname/:email', component: SignUpComponent },
     { path: 'home', component: HomeComponent },
     { path: 'home-task', component: HomeTaskComponent},
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home', pathMatch: 'full' }
-  ];
+];
 
 export const router = appRoutes;

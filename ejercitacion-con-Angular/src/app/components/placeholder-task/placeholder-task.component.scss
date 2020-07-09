@@ -1,0 +1,33 @@
+.tarea_completa,.input_tarea, .eliminar_tarea, .modificar_tarea{
+    animation: pulse 1.3s infinite ease-in-out;
+    animation-iteration-count: infinite;
+}
+.border-contenedor{
+    animation: pulseBorder 1.3s infinite ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulse{
+    0%{
+        background-color: rgba(165,165,165,.1);
+    }
+    50%{
+        background-color: rgba(165,165,165,.3);
+    }
+    100%{
+        background-color: rgba(165,165,165,.1);
+    }
+}
+
+
+@keyframes pulseBorder{
+    0%{
+        border-color: rgba(165,165,165,.1);
+    }
+    50%{
+        border-color: rgba(165,165,165,.3);
+    }
+    100%{
+        border-color: rgba(165,165,165,.1);
+    }
+}

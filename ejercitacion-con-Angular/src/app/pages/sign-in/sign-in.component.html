@@ -6,8 +6,8 @@
       </div>
       <div class="lg:w-2/6 md:w-1/2 bg-gray-200 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
         <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Inicia Secion</h2>
-        <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mb-4" placeholder="Email" type="email" [(ngModel)]="generarJSON.email_person">
-        <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mb-4" placeholder="Password" type="password" [(ngModel)]="generarJSON.passwork_person">
+        <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mb-4" placeholder="Email" type="email" [(ngModel)]="this.person.Email">
+        <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-red-500 text-base px-4 py-2 mb-4" placeholder="Password" type="password" [(ngModel)]="this.person.Passwork">
         <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg" (click)="IniciarUsuario()">Inicia Secion</button>
         <p class="text-xs text-gray-500 mt-3">Si no contienes una cuenta <a class="cursor-pointer text-blue-500" routerLink="/sign-up" routerLinkActive="active">reguistrate</a> para comenzar a realizar tareas.</p>
       </div>

@@ -14,10 +14,11 @@ import { ComponentsModule } from '../components/components.module';
 
 
 
+
 @NgModule({
   declarations: [HomeComponent, SignInComponent, SignUpComponent, HomeTaskComponent],
   providers:[ServicePersonService],
-  imports:[ ComponentsModule ,CommonModule, RouterModule.forRoot(router), FormsModule],
+  imports:[ComponentsModule ,CommonModule, RouterModule.forRoot(router), FormsModule],
   exports: [
     CommonModule,
     SignInComponent,
