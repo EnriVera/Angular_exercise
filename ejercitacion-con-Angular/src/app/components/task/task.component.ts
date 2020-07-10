@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Person } from 'src/app/Models/Person';
 import { Router } from '@angular/router';
 import { ServicePersonService } from 'src/app/service/service-person/service-person.service';
+import { Task } from 'src/app/Models/Task';
 
 @Component({
   selector: 'app-task',
@@ -9,17 +10,16 @@ import { ServicePersonService } from 'src/app/service/service-person/service-per
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent implements OnInit {
+  @Input() task: Task;
   public validar: boolean = false;
   public showIt: boolean = false;
   HabilitarEliminarTarea: boolean = false;
-  person: Person = new Person();
   constructor(public router: Router, public personSevice: ServicePersonService) { }
 
   ngOnInit(): void {
-    this.personSevice.OntenerTodasPerson().subscribe(
-      valor=>this.person = valor,
-      ()=>console.log("Error")
-    )
+  }
+  ngOnChanges():void{
+    this.task.Completado ? this.validar = true : this.validar = false;
   }
 
   ClickTarea(){
@@ -37,7 +37,6 @@ export class TaskComponent implements OnInit {
 
   CerrarModal(newName: string){
     this.showIt = false;
-    //if (newName) this.name = newName;
   }
 
 }

@@ -29,4 +29,8 @@ export class ServicePersonService {
   ObtnerPerson(person: Person): Observable<any> {
     return this.http.get(this.url+`api/people/get-person-por-datos?email=${person.Email}&passwork=${person.Passwork}`, this.httpOptions);
   }
+
+  ObtnerUnaPerson(IDPerson: number): Observable<any> {
+    return this.http.get(this.url+`api/people/getpeopleid?id=${IDPerson}`, this.httpOptions);
+  }
 }

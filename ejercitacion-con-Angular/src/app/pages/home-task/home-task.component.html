@@ -1,17 +1,98 @@
 <div class="lg:w-2/3 height-contenedor mx-auto mt-12">
-  <div class="flex items-center justify-between mb-8">
-    <h1 class="text-lg">Lista de tarea del grupo</h1>
-    <div>
-      <a class="border border-gray-600 bg-white hover:bg-blue-100 hover:border-blue-600 hover:text-blue-700 text-gray-600 text-sm  py-2 px-4 rounded inline-flex items-center w-56 cursor-pointer" (click)="this.HabilitarAgregarTarea = !this.HabilitarAgregarTarea">
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 mx-3" viewBox="0 0 24 24">
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-        </svg>
-        <span>Agregar nueva tarea</span>
-      </a>
+  <div class="mb-8">
+    <p class="text-4xl">Lista de tarea del grupo</p>
+    <div class="flex items-center justify-around w-full mt-6">
+      <div class="relative inline-block text-left ml-10 w-48">
+        <div>
+          <span class="rounded-md shadow-sm">
+            <button
+              type="button"
+              class="inline-flex justify-between w-full border border-gray-600 bg-white hover:border-gray-700 hover:text-gray-700 text-gray-600 text-xs py-2 px-4 rounded focus:outline-none transition ease-in-out duration-150"
+              id="options-menu"
+              aria-haspopup="true"
+              aria-expanded="true"
+              (click)="this.seleccionarGrupo = !this.seleccionarGrupo"
+            >
+              {{ this.tituloGrupo }}
+              <svg
+                class="-mr-1 ml-2 h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </span>
+        </div>
+
+        <div
+          class="origin-top-right absolute right-10 mt-2 w-48 rounded-md shadow-lg"
+          *ngIf="this.seleccionarGrupo"
+        >
+          <!-- Habilitar si no hay grupos -->
+          <div class="rounded-md bg-white shadow-xs" *ngIf="!this.mostrarGrupo">
+            <div
+              class="py-1"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="options-menu"
+            >
+              <a
+                class="block px-16 py-2 text-sm leading-5 focus:outline-none"
+                role="menuitem"
+                ><span class="rounded-full py-2 px-4 text-black"
+                  >No contiene grupo</span
+                >
+              </a>
+            </div>
+          </div>
+          <!-- Habilitar cuando haya grupos -->
+          <div class="rounded-md bg-white shadow-xs" *ngIf="this.mostrarGrupo">
+            <div
+              class="py-1"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="options-menu"
+              *ngFor="let item of this.person.Grupo"
+            >
+              <a
+                class="block px-2 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 cursor-pointer"
+                role="menuitem"
+                (click)="SeleccionarGrupo(item)"
+                ><span class="rounded-full py-2 px-4">{{ item.Titulo }}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <a
+          class="border border-gray-600 bg-white hover:bg-blue-100 hover:border-blue-600 hover:text-blue-700 text-gray-600 text-sm py-2 px-4 rounded inline-flex items-center w-56 cursor-pointer"
+          (click)="this.HabilitarAgregarTarea = !this.HabilitarAgregarTarea"
+        >
+          <svg
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="w-4 h-4 mx-3"
+            viewBox="0 0 24 24"
+          >
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Agregar nueva tarea</span>
+        </a>
+      </div>
     </div>
   </div>
-  <div class="h-full overflow-auto">
+  <div class="lg:h-2/3" *ngIf="this.habilitarPlaceholderTask">
     <app-placeholder-task></app-placeholder-task>
     <app-placeholder-task></app-placeholder-task>
     <app-placeholder-task></app-placeholder-task>
@@ -26,8 +107,15 @@
     <app-placeholder-task></app-placeholder-task>
     <app-placeholder-task></app-placeholder-task>
     <app-placeholder-task></app-placeholder-task>
-    <!--<app-task></app-task>-->
+  </div>
+  <div class="lg:h-2/3" *ngIf="this.habilitarTask">
+    <span *ngFor="let item of this.task">
+      <app-task [task]="item">></app-task>
+    </span>
   </div>
 </div>
 
-<app-add-task *ngIf="this.HabilitarAgregarTarea" (close)="this.HabilitarAgregarTarea = false"></app-add-task>
+<app-add-task
+  *ngIf="this.HabilitarAgregarTarea"
+  (close)="this.HabilitarAgregarTarea = false"
+></app-add-task>
