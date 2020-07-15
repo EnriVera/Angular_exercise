@@ -21,5 +21,5 @@
         </div>
     </div>
 </div>
-<app-modal-task *ngIf="this.showIt" (close)="CerrarModal($event)"></app-modal-task>
-<app-delete-task *ngIf="this.HabilitarEliminarTarea" (close)="this.HabilitarEliminarTarea = false"></app-delete-task>
+<app-modal-task *ngIf="this.modal" (close)="CerrarModal($event)" [task]='this.task'></app-modal-task>
+<app-delete-task *ngIf="this.HabilitarEliminarTarea" (close)="this.HabilitarEliminarTarea = false" [task]='this.task'></app-delete-task>

@@ -13,7 +13,7 @@
           <div class="h-full flex flex-col space-y-6 py-6 bg-white shadow-xl overflow-y-scroll">
             <header class="px-4 sm:px-6">
               <h2 class="text-lg leading-7 font-medium text-gray-900">
-                <input class="text-black p-1 flex items-center w-full border border-transparent rounded focus:outline-none focus:border-gray-200" type="text" maxlength="100" placeholder="Titulo de la tarea" value="Hola como andas">
+                <input class="text-black p-1 flex items-center w-full border border-transparent rounded focus:outline-none focus:border-gray-200" type="text" maxlength="100" placeholder="Titulo de la tarea" [(ngModel)]="this.task.Titulo" [ngModelOptions]="{standalone: true}">
               </h2>
             </header>
             <div class="relative flex-1 px-4 sm:px-6">
@@ -24,17 +24,17 @@
 
                         <div class="flex items-center text-left ml-10 w-48">
                           <div class="flex items-center w-12 mr-4">
-                            <input type="radio" id="alta" name="gender" value="alta">
+                            <input type="radio" id="alta" name="gender" value="alta" [value]="3"  [(ngModel)]="this.task.Estado" [ngModelOptions]="{standalone: true}">
                             <label class="text-red-600 mx-1" for="alta">Alta</label>
                           </div>
 
                           <div class="flex items-center w-16 mr-4">
-                            <input type="radio" id="medio" name="gender" value="medio">
+                            <input type="radio" id="medio" name="gender" value="medio" [value]="2"  [(ngModel)]="this.task.Estado" [ngModelOptions]="{standalone: true}">
                             <label class="text-orange-600 mx-1" for="medio">Medio</label>
                           </div>
 
                           <div class="flex items-center w-12">
-                            <input type="radio" id="baja" name="gender" value="baja">
+                            <input type="radio" id="baja" name="gender" value="baja" [value]="1"  [(ngModel)]="this.task.Estado" [ngModelOptions]="{standalone: true}">
                             <label class="text-green-600 mx-1" for="baja">Baja</label>
                           </div>
                         </div>
@@ -66,12 +66,12 @@
 
                     <div class="flex items-center justify-between my-4">
                         <label for="" class="text-sm">Comienzo de la tarea</label>
-                        <input class="w-48 p-1 text-sm leading-5 focus:outline-none  rounded-md border border-gray-300 px-4 py-1 bg-white text-sm leading-5 font-medium text-gray-700 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" id="cus_name" name="cus_name" type="date">
+                        <input class="w-48 p-1 text-sm leading-5 focus:outline-none  rounded-md border border-gray-300 px-4 py-1 bg-white text-sm leading-5 font-medium text-gray-700 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" id="cus_name" name="cus_name" type="date" [(ngModel)]="this.task.FechaComienzo" [ngModelOptions]="{standalone: true}">
                     </div>
 
                     <div class="flex items-center justify-between my-4">
                       <label for="" class="text-sm">Descripcion</label>
-                      <textarea placeholder="Descripcion de la tarea" maxlength="300" cols="10" rows="10" class="style-textarea w-48 h-16 p-1 text-sm leading-5 focus:outline-none  rounded-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"></textarea>
+                      <textarea placeholder="Descripcion de la tarea" maxlength="300" cols="10" rows="10" class="style-textarea w-48 h-16 p-1 text-sm leading-5 focus:outline-none  rounded-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" [(ngModel)]="this.task.Descripcion" [ngModelOptions]="{standalone: true}"></textarea>
                     </div>
                     
                     <div class="style-line bg-gray-400 mt-10"></div>

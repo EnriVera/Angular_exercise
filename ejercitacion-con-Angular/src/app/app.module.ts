@@ -10,6 +10,8 @@ import { PagesModule } from './pages/pages.module';
 import { router } from './router/config-router';
 import { ServicePersonService } from './service/service-person/service-person.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceTaskService } from './service/service-task/service-task.service';
+import { ServiceGrupoTaskService } from './service/service-grupoTask/service-grupo-task.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PagesModule,
     BrowserAnimationsModule
   ],
-  providers: [ServicePersonService],
+  providers: [ServicePersonService, ServiceTaskService, ServiceGrupoTaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

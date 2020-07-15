@@ -7,7 +7,7 @@
           <span class="rounded-md shadow-sm">
             <button
               type="button"
-              class="inline-flex justify-between w-full border border-gray-600 bg-white hover:border-gray-700 hover:text-gray-700 text-gray-600 text-xs py-2 px-4 rounded focus:outline-none transition ease-in-out duration-150"
+              class="inline-flex justify-between w-full border border-gray-600 bg-white hover:border-gray-700 hover:text-gray-700 text-gray-600 text-ms py-2 px-4 rounded focus:outline-none transition ease-in-out duration-150"
               id="options-menu"
               aria-haspopup="true"
               aria-expanded="true"
@@ -42,7 +42,7 @@
               aria-labelledby="options-menu"
             >
               <a
-                class="block px-16 py-2 text-sm leading-5 focus:outline-none"
+                class="block px-2 py-2 text-xs leading-5 focus:outline-none"
                 role="menuitem"
                 ><span class="rounded-full py-2 px-4 text-black"
                   >No contiene grupo</span
@@ -70,7 +70,7 @@
         </div>
       </div>
 
-      <div>
+      <div *ngIf="this.mostrarGrupo">
         <a
           class="border border-gray-600 bg-white hover:bg-blue-100 hover:border-blue-600 hover:text-blue-700 text-gray-600 text-sm py-2 px-4 rounded inline-flex items-center w-56 cursor-pointer"
           (click)="this.HabilitarAgregarTarea = !this.HabilitarAgregarTarea"
@@ -117,5 +117,6 @@
 
 <app-add-task
   *ngIf="this.HabilitarAgregarTarea"
-  (close)="this.HabilitarAgregarTarea = false"
+  [grupoTask]='this.grupoTask'
+  (close)="MostrarNuevaTarea()"
 ></app-add-task>

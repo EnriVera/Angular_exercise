@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 
@@ -18,6 +19,7 @@ import { PlaceholderTaskComponent } from './placeholder-task/placeholder-task.co
   declarations: [NavbarComponent, TaskComponent, ModalTaskComponent, AddTaskComponent, DeleteTaskComponent, PlaceholderTaskComponent],
   providers: [ServicePersonService],
   imports: [
+    FormsModule,
     CommonModule,
     RouterModule.forRoot(router)
   ],

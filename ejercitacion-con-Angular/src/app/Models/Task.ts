@@ -2,12 +2,12 @@ import { Person } from './Person'
 
 export class Task{
     ID: number
-    Titulo: String
-    Descripcion: String
+    Titulo: string
+    Descripcion: string
     FechaCreacion: Date
     Estado: number
     FechaComienzo: Date
     Completado: Boolean
-    Imagen: number[]
+    Imagen: any[]
     IDPerson: Person
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Person } from 'src/app/Models/Person';
-import { Router } from '@angular/router';
-import { ServicePersonService } from 'src/app/service/service-person/service-person.service';
 import { Task } from 'src/app/Models/Task';
+import { GrupoTask } from 'src/app/Models/GrupoTask';
+import { ServiceTaskService } from 'src/app/service/service-task/service-task.service';
+import { SweeNotification } from 'src/app/resource/notification';
 
 @Component({
   selector: 'app-task',
@@ -10,33 +10,35 @@ import { Task } from 'src/app/Models/Task';
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent implements OnInit {
-  @Input() task: Task;
+  @Input() task: Task = new Task();
   public validar: boolean = false;
-  public showIt: boolean = false;
+  public modal: boolean = false;
   HabilitarEliminarTarea: boolean = false;
-  constructor(public router: Router, public personSevice: ServicePersonService) { }
+
+  sweenotificacion: SweeNotification = new SweeNotification();
+  constructor(public servicetask: ServiceTaskService) { }
 
   ngOnInit(): void {
   }
+
   ngOnChanges():void{
     this.task.Completado ? this.validar = true : this.validar = false;
   }
 
   ClickTarea(){
-    this.validar = !this.validar
-  }
-
-  BorrarTarea(){
-    console.log("Se borro la tarea")
+    this.servicetask.PutTaskCompletada(this.task.ID).subscribe(
+      () => {this.validar = !this.validar},
+      ()=>{this.sweenotificacion.ErrorModel('Verifique su internet, no se a completado la tarea')}
+    )
   }
 
   ModificarTarea(){
     console.log("Se modifico")
-    this.showIt = true;
+    this.modal = true;
   }
 
   CerrarModal(newName: string){
-    this.showIt = false;
+    this.modal = false;
   }
 
 }
