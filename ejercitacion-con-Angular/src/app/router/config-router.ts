@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from '../pages/sign-in/sign-in.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { SignUpComponent } from '../pages/sign-up/sign-up.component';
-import { Component } from '@angular/core';
 import { HomeTaskComponent } from '../pages/home-task/home-task.component';
-import { TaskComponent } from '../components/task/task.component';
+import { PagesGroupComponent } from '../pages/pages-group/pages-group.component';
 
 
 const appRoutes: Routes = [
     { path: 'sign-in', component: SignInComponent },
     { path: 'sign-up', component: SignUpComponent },
+    { path: 'group', component: PagesGroupComponent },
     { path: 'sign-up/data/:fullname/:email', component: SignUpComponent },
     { path: 'home', component: HomeComponent },
     { path: 'home-task', component: HomeTaskComponent},

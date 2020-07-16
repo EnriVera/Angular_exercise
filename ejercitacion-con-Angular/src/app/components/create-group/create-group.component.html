@@ -1,0 +1,18 @@
+<div class="modal bg-white rounded shadow p-8 m-4 w-1/4 text-center overflow">
+    <div class="mb-4">
+        <h1 class="text-black text-lg">Nuevo Grupo</h1>
+    </div>
+    <form class="mb-8 flex flex-col" #form="ngForm"> <!-- (ngSubmit)="onSubmit()" -->
+        <div class="border border-dashed border-gray-400 w-fll h-24 mt-2 text-gray-600 flex justify-center items-center cursor-pointer mb-2">
+            Imagen
+        </div>
+        <label class="w-10 text-base px-4 py-2">Titulo</label>
+        <input type="text" class="text-base px-4 py-2 mb-4  bg-white rounded border border-gray-400 focus:outline-none focus:border-gray-600" placeholder="Titulo">
+        <label class="w-10 text-base px-4 py-2">Descripcion</label>
+        <input type="text" class="text-base px-4 py-2 mb-4  bg-white rounded border border-gray-400 focus:outline-none focus:border-gray-600" placeholder="Descripcion">
+        <div class="flex justify-around mt-4">
+            <button class="flex-no-shrink text-white py-2 px-4 rounded bg-red-600 hover:bg-red-700 border border-transparent focus:outline-none focus:border-transparent" type="submit">Agregar Grupo</button>
+            <button class="flex-no-shrink text-black py-2 px-4 rounded bg-gray-200 hover:bg-gray-300 border border-transparent focus:outline-none focus:border-transparent" (click)="this.close.emit(null)">Cancelar</button>
+        </div>
+    </form>
+</div>

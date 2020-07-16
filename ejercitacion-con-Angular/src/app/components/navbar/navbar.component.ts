@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
     
     router.events.forEach((event) => {
       if(event instanceof NavigationStart) {
-        event.url == '/home-task' ? this.habilitar = true : this.habilitar = false;
+        event.url == '/home-task' || event.url == '/group' ? this.habilitar = true : this.habilitar = false;
       }
     });
   }

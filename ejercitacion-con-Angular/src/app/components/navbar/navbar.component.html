@@ -7,7 +7,7 @@
       <span class="ml-3 text-xl">You Task</span>
     </a>
     <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center"></nav>
-    <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0"  routerLink="/sign-in" routerLinkActive="active"  *ngIf="!this.habilitar">Inicia Secion
+    <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0"  routerLink="/sign-in" routerLinkActive="active" *ngIf="!this.habilitar">Inicia Secion
       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
         <path d="M5 12h14M12 5l7 7-7 7"></path>
       </svg>
@@ -37,11 +37,21 @@
 		</div>
 
 		<ul>
-      <!-- Items Section -->
+	  <!-- Items Section -->
+	  
+	  <!-- home -->
+	 		 <li class="hover:bg-gray-100 cursor-pointer">
+				<a class="h-16 px-6 flex flex justify-center items-center w-full focus:text-orange-500" routerLink="/home-task" routerLinkActive="active">
+  					<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+						<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+						<polyline points="9 22 9 12 15 12 15 22"></polyline>
+  					</svg>
+				</a>
+			</li>
       
       <!-- Grupos -->
-			<li class="hover:bg-gray-100">
-				<a class="h-16 px-6 flex flex justify-center items-center w-full focus:text-orange-500">
+			<li class="hover:bg-gray-100 cursor-pointer">
+				<a class="h-16 px-6 flex flex justify-center items-center w-full focus:text-orange-500" routerLink="/group" routerLinkActive="active">
           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
             <circle cx="9" cy="7" r="4"></circle>
@@ -163,7 +173,7 @@
     </nav>
     
     <div class="h-full w-full overflow-y-auto">
-		<router-outlet></router-outlet>
+		<router-outlet *ngIf="this.habilitar"></router-outlet>
 	</div>
 
 	</div>
