@@ -15,13 +15,15 @@
             {{this.grupo.Descripcion}}
          </p>
          <div class="mt-4 flex items-center justify-end">
-            <a class="py-2 px-2 rounded border border-gray-300 mr-2 cursor-pointer">
+            <a class="py-2 px-2 rounded border border-gray-300 mr-2 cursor-pointer" (click)="this.eliminarGrupo = true">
                Eliminar
             </a>
-            <a class="py-2 px-2 rounded border border-gray-300 cursor-pointer" *ngIf="this.IDPerson == this.grupo.Administrador.ID">
+            <a class="py-2 px-2 rounded border border-gray-300 cursor-pointer" *ngIf="this.IDPerson == this.grupo.Administrador.ID" (click)="this.modificarGrupo = true">
                Modificar
             </a>
          </div>
       </div>
    </div>
 </div>
+<app-delete-group *ngIf="this.eliminarGrupo" (close)="this.eliminarGrupo = false" [idGrupo]="this.grupo.ID" [idPerson]="this.IDPerson"></app-delete-group>
+<app-modify-group *ngIf="this.modificarGrupo" (close)="this.modificarGrupo = false" [grupo]="this.grupo"></app-modify-group>

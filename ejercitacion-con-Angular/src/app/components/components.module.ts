@@ -15,11 +15,13 @@ import { PlaceholderTaskComponent } from './placeholder-task/placeholder-task.co
 import { PlaceholderGroupComponent } from './placeholder-group/placeholder-group.component';
 import { GroupComponent } from './group/group.component';
 import { CreateGroupComponent } from './create-group/create-group.component';
+import { DeleteGroupComponent } from './delete-group/delete-group.component';
+import { ModifyGroupComponent } from './modify-group/modify-group.component';
 
 
 
 @NgModule({
-  declarations: [NavbarComponent, TaskComponent, ModalTaskComponent, AddTaskComponent, DeleteTaskComponent, PlaceholderTaskComponent, PlaceholderGroupComponent, GroupComponent, CreateGroupComponent],
+  declarations: [NavbarComponent, TaskComponent, ModalTaskComponent, AddTaskComponent, DeleteTaskComponent, PlaceholderTaskComponent, PlaceholderGroupComponent, GroupComponent, CreateGroupComponent, DeleteGroupComponent, ModifyGroupComponent],
   providers: [ServicePersonService],
   imports: [
     FormsModule,
@@ -27,6 +29,7 @@ import { CreateGroupComponent } from './create-group/create-group.component';
     RouterModule.forRoot(router)
   ],
   exports: [
+    DeleteGroupComponent,
     CreateGroupComponent,
     GroupComponent,
     PlaceholderGroupComponent,

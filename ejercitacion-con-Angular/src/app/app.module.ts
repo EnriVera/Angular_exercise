@@ -12,6 +12,8 @@ import { ServicePersonService } from './service/service-person/service-person.se
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceTaskService } from './service/service-task/service-task.service';
 import { ServiceGrupoTaskService } from './service/service-grupoTask/service-grupo-task.service';
+import { ServiceGroupService } from './service/service-group/service-group.service';
+import { ServiceGrupoPersonService } from './service/service-grupoPerson/service-grupo-person.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { ServiceGrupoTaskService } from './service/service-grupoTask/service-gru
     PagesModule,
     BrowserAnimationsModule
   ],
-  providers: [ServicePersonService, ServiceTaskService, ServiceGrupoTaskService],
+  providers: [ServicePersonService, ServiceTaskService, ServiceGrupoTaskService, ServiceGroupService, ServiceGrupoPersonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,7 +7,8 @@ import { Grupo } from 'src/app/Models/Grupo';
   styleUrls: ['./group.component.scss']
 })
 export class GroupComponent implements OnInit {
-
+  modificarGrupo: boolean = false;
+  eliminarGrupo: boolean = false;
   @Input() IDPerson: number;
   @Input() grupo: Grupo = new Grupo();
   constructor() { }
