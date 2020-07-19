@@ -5,6 +5,7 @@ import { Grupo } from 'src/app/Models/Grupo';
 import { Task } from 'src/app/Models/Task';
 import { GrupoTask } from 'src/app/Models/GrupoTask';
 import * as moment from 'moment';
+import { ServiceTaskService } from 'src/app/service/service-task/service-task.service';
 
 @Component({
   selector: 'app-home-task',
@@ -12,18 +13,23 @@ import * as moment from 'moment';
   styleUrls: ['./home-task.component.scss']
 })
 export class HomeTaskComponent implements OnInit {
-  habilitarTask: boolean = false;
-  habilitarPlaceholderTask: boolean = false;
-  HabilitarAgregarTarea: boolean = false;
-  seleccionarGrupo: boolean = false;
-  tituloGrupo: String = "Seleccione un grupo"
-  mostrarGrupo: boolean = false;
+  consultar: any = {
+
+    habilitarTask: false,
+    habilitarPlaceholderTask: false,
+    HabilitarAgregarTarea: false,
+    seleccionarGrupo: false,
+    tituloGrupo: "Seleccione un grupo",
+    mostrarGrupo: false,
+    mostrarAgregarTarea: false,
+    mostrarMensage: false
+  }
 
   person: Person = new Person();
   task: Task[];
   grupoTask: GrupoTask = new GrupoTask();
   grupo: Grupo = new Grupo();
-  constructor(public service: ServicePersonService) { }
+  constructor(public service: ServicePersonService, public serviceTask: ServiceTaskService) { }
 
   ngOnInit(): void {
     var IDPerson = JSON.parse(localStorage.getItem('Usuario'))
@@ -32,52 +38,54 @@ export class HomeTaskComponent implements OnInit {
   }
 
   SeleccionarGrupo(grupo: Grupo){
-    this.grupo = grupo;
-    this.habilitarTask = false
-    this.habilitarPlaceholderTask = true
+    this.consultar.mostrarAgregarTarea = true;
 
-    this.tituloGrupo = grupo.Titulo
+    this.grupo = grupo;
+
+    this.consultar.tituloGrupo = grupo.Titulo
+
     this.task = grupo.Task;
 
     // objeto de grupoTask
     this.grupoTask.IDGrupo = grupo.ID;
     this.grupoTask.IDPersonColocador = this.person.ID;
 
-    this.seleccionarGrupo = false
-
-    this.habilitarPlaceholderTask = false
-    this.habilitarTask = true
+    this.MostrarTareas()
+    this.consultar.seleccionarGrupo = false
   }
 
-  async MostrarNuevaTarea(){
-    this.HabilitarAgregarTarea = false
-
-    this.habilitarTask = false
-    this.habilitarPlaceholderTask = true
-    await this.ConsultarDatosPerson(this.person)
-    await this.person.Grupo.forEach(e=> {
-      if(e.ID === this.grupo.ID) this.grupo = e; return null;
-    })
-    this.habilitarPlaceholderTask = false
-    this.habilitarTask = true
-  }
-
-  ConsultarDatosPerson(IDPerson){
-    this.service.ObtnerUnaPerson(IDPerson.ID).subscribe(
+  MostrarTareas(){
+    this.consultar.habilitarTask = false
+    this.consultar.habilitarPlaceholderTask = true
+    this.serviceTask.GetTask(this.grupo.ID).subscribe(
       value => {
-        if(value.Grupo != null) {this.mostrarGrupo = true};
-        value.Grupo.forEach(element => {
-          element.Task.forEach(task => {
+        if(value.length == 0){
+          console.log(value)
+          this.consultar.habilitarPlaceholderTask = false
+          this.consultar.mostrarMensage = true;
+        }
+        else{
+          value.forEach(task => {
             if(task.FechaComienzo != null)
             {
               var fechaData = task.FechaComienzo.substr(0, 10);
               task.FechaComienzo = moment(fechaData).format('yyyy-MM-DD')
             }
           })
-        });
+          this.consultar.habilitarPlaceholderTask = false
+          this.consultar.habilitarTask = true
+        }
+        this.task = value;
+      }
+    )
+  }
+
+  ConsultarDatosPerson(IDPerson){
+    this.service.ObtnerUnaPerson(IDPerson.ID).subscribe(
+      value => {
+        value.Grupo.length != 0 ? this.consultar.mostrarGrupo = true : this.consultar.mostrarGrupo = false;
         this.person = value;
-      },
-      () => console.log("Ocurio un error")
+      }
     )
   }
 

@@ -1,0 +1,47 @@
+<div class="lg:w-2/3 height-contenedor mx-auto mt-12 pt-2">
+    <div class="container mx-auto">
+        <div class="flex justify-center items-center">
+            <div class="w-32 h-32 rounded-full object-cover mr-4 border border-dashed border-gray-500 flex justify-center items-center">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-24 h-24 text-gray-500" viewBox="0 0 24 24">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </div>
+        </div>
+        <div class="inputs w-full max-w-2xl p-6 mx-auto">
+            <h2 class="text-2xl text-gray-900">Configuración de cuenta</h2>
+            <form class="mt-6 border-t border-gray-400 pt-4" (ngSubmit)="MosificarDatos()" #form="ngForm">
+                <div class='flex flex-wrap -mx-3 mb-6'>
+                    <div class='w-full md:w-full px-3 mb-6'>
+                        <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' for='grid-text-1'>Email</label>
+                        <label for="email" class="class='appearance-none block w-full bg-white text-gray-700 leading-tight" id='grid-text-1'>{{this.person.Email}}</label>
+                    </div>
+                    <div class='w-full md:w-full px-3 mb-6 '>
+                        <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Contraceña</label>
+                        <label for="email" class="class='appearance-none block w-full bg-white text-gray-700 leading-tight" id='grid-text-1'>{{this.person.Passwork}}</label>
+                    </div>
+                    <div class="personal w-full border-t border-gray-400 pt-4">
+                        <h2 class="text-2xl text-gray-900">Informacion personal:</h2>
+                        <div class="flex items-center justify-between mt-4">
+                            <div class='w-full md:w-1/2 px-3 mb-6'>
+                                <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' >Nombre</label>
+                                <input class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text' [(ngModel)]="this.person.Nombre" [ngModelOptions]="{standalone: true}"  required>
+                            </div>
+                            <div class='w-full md:w-1/2 px-3 mb-6'>
+                                <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' >Apellido</label>
+                                <input class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text' [(ngModel)]="this.person.Apellido" [ngModelOptions]="{standalone: true}" required>
+                            </div>
+                        </div>
+                        <div class='w-full md:w-full px-3 mb-6'>
+                            <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' >Descripcion</label>
+                            <textarea class='bg-gray-100 rounded-md border leading-normal resize-none w-full h-20 py-2 px-3 shadow-inner border border-gray-400 font-medium placeholder-gray-700 focus:outline-none focus:bg-white' [(ngModel)]="this.person.Descripcion" [ngModelOptions]="{standalone: true}"></textarea>
+                        </div>
+                        <div class="flex justify-end">
+                            <button class="appearance-none bg-gray-200 text-gray-900 px-2 py-1 shadow-sm border border-gray-400 rounded-md mr-3" type="submit">Guardar Cambios</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

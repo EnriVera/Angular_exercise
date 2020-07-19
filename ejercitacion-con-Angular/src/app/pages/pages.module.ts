@@ -11,13 +11,15 @@ import { ServicePersonService } from '../service/service-person/service-person.s
 import { HomeTaskComponent } from './home-task/home-task.component';
 import { ComponentsModule } from '../components/components.module';
 import { PagesGroupComponent } from './pages-group/pages-group.component';
+import { AccountComponent } from './account/account.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, SignInComponent, SignUpComponent, HomeTaskComponent, PagesGroupComponent],
+  declarations: [HomeComponent, SignInComponent, SignUpComponent, HomeTaskComponent, PagesGroupComponent, AccountComponent],
   providers:[ServicePersonService],
   imports:[ComponentsModule ,CommonModule, RouterModule.forRoot(router), FormsModule],
   exports: [
+    AccountComponent,
     PagesGroupComponent,
     CommonModule,
     SignInComponent,

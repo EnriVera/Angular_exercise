@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Grupo } from 'src/app/Models/Grupo';
 
 @Component({
@@ -11,6 +11,7 @@ export class GroupComponent implements OnInit {
   eliminarGrupo: boolean = false;
   @Input() IDPerson: number;
   @Input() grupo: Grupo = new Grupo();
+  @Output() close = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {

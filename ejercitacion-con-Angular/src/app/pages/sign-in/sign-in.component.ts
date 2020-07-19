@@ -31,7 +31,7 @@ export class SignInComponent implements OnInit {
             this.valor_router.navigate(['/home-task'])
 
           },
-          () => this.sweenotificacion.ErrorModel('Verifique los su correo o su passwork')
+          () => this.sweenotificacion.ErrorModel('Verifique su correo o su passwork')
         )
       }
       else this.sweenotificacion.ErrorModel("No lleno los campos o le falta el ' @gmail.com '")

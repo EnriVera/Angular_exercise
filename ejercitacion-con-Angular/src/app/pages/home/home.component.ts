@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SweeNotification } from 'src/app/resource/notification';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',

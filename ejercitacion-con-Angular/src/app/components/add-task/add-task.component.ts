@@ -48,6 +48,5 @@ export class AddTaskComponent implements OnInit {
             this.notificacion.ErrorModel('Verifique los campos o  el internet')
         )
       : this.notificacion.ErrorModel('No agrego un titulo');
-    //this.close.emit(null);
   }
 }

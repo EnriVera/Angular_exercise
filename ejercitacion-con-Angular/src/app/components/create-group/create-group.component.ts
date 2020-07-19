@@ -14,13 +14,13 @@ export class CreateGroupComponent implements OnInit {
   @Output() close = new EventEmitter<string>();
   sweenotificacion: SweeNotification = new SweeNotification();
   grupo: Grupo = new Grupo();
-  constructor(public serviceGrupo: ServiceGroupService) {}
+  constructor(public serviceGrupo: ServiceGroupService) {
+  }
 
   ngOnInit(): void {}
 
   AgregarGrupo() {
     this.grupo.Administrador = this.Person;
-    console.log(this.grupo)
     this.grupo.Titulo != ''
       ? this.serviceGrupo.PostGrupo(this.grupo).subscribe(
           () => {

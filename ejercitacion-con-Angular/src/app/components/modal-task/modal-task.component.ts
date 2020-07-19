@@ -17,13 +17,8 @@ export class ModalTaskComponent implements OnInit {
   constructor(public service: ServiceTaskService) {}
 
   ngOnInit() {
-    // copy all inputs to avoid polluting them
   }
-
-  ok() {
-    this.close.emit(null);
-  }
-
+  
   cancel() {
     this.task.Titulo != ''
       ? this.service.PutTask(this.task).subscribe(
@@ -31,8 +26,8 @@ export class ModalTaskComponent implements OnInit {
             this.sweenotificacion.SuccessModel('Se han modificado los datos');
             this.close.emit(null);
           },
-          () => this.sweenotificacion.ErrorModel('Verifique los')
+          () => this.sweenotificacion.ErrorModel('Verifique los datos o  su conesccion a internet')
         )
-      : this.sweenotificacion.ErrorModel('Ingrese al menos el titulo');
+      : this.sweenotificacion.ErrorModel('Ingrese el titulo');
   }
 }

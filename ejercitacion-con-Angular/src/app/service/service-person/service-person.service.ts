@@ -33,4 +33,9 @@ export class ServicePersonService {
   ObtnerUnaPerson(IDPerson: number): Observable<any> {
     return this.http.get(this.url+`api/people/getpeopleid?id=${IDPerson}`, this.httpOptions);
   }
+
+
+  ModificarPerson(person: Person): Observable<any>{
+    return this.http.put(this.url+`api/people/putperson`, JSON.stringify(person), this.httpOptions)
+  }
 }

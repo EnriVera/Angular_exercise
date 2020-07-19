@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Person } from 'src/app/Models/Person';
 import { SweeNotification } from 'src/app/resource/notification';
 import { Grupo } from 'src/app/Models/Grupo';
 import { ServiceGroupService } from 'src/app/service/service-group/service-group.service';

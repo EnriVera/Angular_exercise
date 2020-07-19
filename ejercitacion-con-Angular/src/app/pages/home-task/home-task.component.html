@@ -11,9 +11,9 @@
               id="options-menu"
               aria-haspopup="true"
               aria-expanded="true"
-              (click)="this.seleccionarGrupo = !this.seleccionarGrupo"
+              (click)="this.consultar.seleccionarGrupo = !this.consultar.seleccionarGrupo"
             >
-              {{ this.tituloGrupo }}
+              {{ this.consultar.tituloGrupo }}
               <svg
                 class="-mr-1 ml-2 h-5 w-5"
                 viewBox="0 0 20 20"
@@ -31,10 +31,10 @@
 
         <div
           class="origin-top-right absolute right-10 mt-2 w-48 rounded-md shadow-lg"
-          *ngIf="this.seleccionarGrupo"
+          *ngIf="this.consultar.seleccionarGrupo"
         >
           <!-- Habilitar si no hay grupos -->
-          <div class="rounded-md bg-white shadow-xs" *ngIf="!this.mostrarGrupo">
+          <div class="rounded-md bg-white shadow-xs" *ngIf="!this.consultar.mostrarGrupo">
             <div
               class="py-1"
               role="menu"
@@ -51,7 +51,7 @@
             </div>
           </div>
           <!-- Habilitar cuando haya grupos -->
-          <div class="rounded-md bg-white shadow-xs" *ngIf="this.mostrarGrupo">
+          <div class="rounded-md bg-white shadow-xs" *ngIf="this.consultar.mostrarGrupo">
             <div
               class="py-1"
               role="menu"
@@ -70,10 +70,11 @@
         </div>
       </div>
 
-      <div *ngIf="this.mostrarGrupo">
-        <a
+      <div>
+        <button
+          [disabled]="!this.consultar.mostrarAgregarTarea"
           class="border border-gray-600 bg-white hover:bg-blue-100 hover:border-blue-600 hover:text-blue-700 text-gray-600 text-sm py-2 px-4 rounded inline-flex items-center w-56 cursor-pointer"
-          (click)="this.HabilitarAgregarTarea = !this.HabilitarAgregarTarea"
+          (click)="this.consultar.HabilitarAgregarTarea = !this.consultar.HabilitarAgregarTarea"
         >
           <svg
             fill="none"
@@ -88,11 +89,15 @@
             <line x1="5" y1="12" x2="19" y2="12"></line>
           </svg>
           <span>Agregar nueva tarea</span>
-        </a>
+        </button>
       </div>
     </div>
   </div>
-  <div class="lg:h-2/3" *ngIf="this.habilitarPlaceholderTask">
+  <div class="flex justify-center items-center flex-col" *ngIf="this.consultar.mostrarMensage">
+    <img class="w-1/2 h-1/2 my-8" src="../../../assets/img/task.svg">
+    <p class="text-base leading-relaxed text-center">No contiene ninguna tarea, presione el boton " Agregar nueva tarea " para agregar la nueva tarea al grupo.</p>
+  </div>
+  <div class="lg:h-2/3" *ngIf="this.consultar.habilitarPlaceholderTask">
     <app-placeholder-task></app-placeholder-task>
     <app-placeholder-task></app-placeholder-task>
     <app-placeholder-task></app-placeholder-task>
@@ -108,15 +113,15 @@
     <app-placeholder-task></app-placeholder-task>
     <app-placeholder-task></app-placeholder-task>
   </div>
-  <div class="lg:h-2/3" *ngIf="this.habilitarTask">
+  <div class="lg:h-2/3" *ngIf="this.consultar.habilitarTask">
     <span *ngFor="let item of this.task">
-      <app-task [task]="item">></app-task>
+      <app-task [task]="item" (close)="this.MostrarTareas()"></app-task>
     </span>
   </div>
 </div>
 
 <app-add-task
-  *ngIf="this.HabilitarAgregarTarea"
+  *ngIf="this.consultar.HabilitarAgregarTarea"
   [grupoTask]='this.grupoTask'
-  (close)="MostrarNuevaTarea()"
+  (close)="this.consultar.HabilitarAgregarTarea = false; MostrarTareas();"
 ></app-add-task>

@@ -23,10 +23,7 @@ export class DeleteTaskComponent implements OnInit {
         this.sweenotificacion.SuccessModel('Se a borrado correctamente')
         this.close.emit(null);
       },
-      ()=> this.sweenotificacion.ErrorModel('Verifique su internet, no se pude borrar')
+      ()=> this.sweenotificacion.ErrorModel('Verifique su internet, no se pudo borrar')
     );
-  }
-  Cancelar(){
-    this.close.emit(null);
   }
 }

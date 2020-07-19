@@ -21,10 +21,10 @@ export class DeleteGroupComponent implements OnInit {
   EliminarGrupo(){
     this.grupoPersonService.DeleteGrupo(this.idGrupo, this.idPerson).subscribe(
       ()=>{
-        this.sweenotificacion.SuccessModel('Se elimino el gropo')
+        this.sweenotificacion.SuccessModel('Se elimino el grupo')
         this.close.emit(null);
       }, 
-      ()=>{this.sweenotificacion.ErrorModel('Verifique si internet, no se pudo eliminar')}
+      ()=>{this.sweenotificacion.ErrorModel('Verifique su internet, no se pudo eliminar')}
     )
   }
 } 

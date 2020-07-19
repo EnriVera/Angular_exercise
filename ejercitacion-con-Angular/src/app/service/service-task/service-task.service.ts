@@ -18,12 +18,20 @@ export class ServiceTaskService {
     })
   };
 
+  GetTask(IDGrupo: number): Observable<any>{
+    return this.http.get(this.url+`api/task/getTask?grupo=${IDGrupo}`);
+  }
+
   PostTask(task: Task): Observable<any>{
     return this.http.post(this.url+`api/task/postTask`, JSON.stringify(task), this.httpOptions);
   }
 
   PutTask(task: Task): Observable<any>{
     return this.http.put(this.url+`api/task/modificarTask`, JSON.stringify(task), this.httpOptions);
+  }
+
+  PatchTask(id: number, titulo: string): Observable<any>{
+    return this.http.patch(this.url+`api/task/modificarTitulotask?id=${id}&titulo=${titulo}`, this.httpOptions)
   }
 
   PutTaskCompletada(id:number): Observable<any> {

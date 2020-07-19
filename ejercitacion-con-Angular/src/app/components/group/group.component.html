@@ -1,6 +1,15 @@
 <div class="w-fullmx-auto overflow-auto items-center m-4 shadow-lg rounded-lg">
    <div class="flex items-start px-4 py-6">
-      <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="avatar">
+      <a class="flex flex-col flex-grow items-center justify-center w-12 h-12 rounded-full object-cover mr-4 border border-dashed border-gray-300">
+         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5 text-gray-400" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+         </svg>
+      </a>
+
+      <!--<img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="avatar">-->
       <div class="w-full">
          <div class="flex items-center justify-between">
             <h2 class="text-lg font-semibold text-gray-900 -mt-1">{{this.grupo.Titulo}}</h2>
@@ -25,5 +34,5 @@
       </div>
    </div>
 </div>
-<app-delete-group *ngIf="this.eliminarGrupo" (close)="this.eliminarGrupo = false" [idGrupo]="this.grupo.ID" [idPerson]="this.IDPerson"></app-delete-group>
+<app-delete-group *ngIf="this.eliminarGrupo" (close)="this.eliminarGrupo = false; this.close.emit(null)" [idGrupo]="this.grupo.ID" [idPerson]="this.IDPerson"></app-delete-group>
 <app-modify-group *ngIf="this.modificarGrupo" (close)="this.modificarGrupo = false" [grupo]="this.grupo"></app-modify-group>

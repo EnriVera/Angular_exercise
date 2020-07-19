@@ -10,8 +10,6 @@ import { Person } from 'src/app/Models/Person';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-
-  public ValoresDelLink = {fullname: '', email: ''}
   person: Person = new Person();
   private sweenotificacion = new SweeNotification;
 

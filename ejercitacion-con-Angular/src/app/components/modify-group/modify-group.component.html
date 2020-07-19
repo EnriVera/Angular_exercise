@@ -1,13 +1,13 @@
 <div class="modal bg-white rounded shadow p-8 m-4 w-1/4 text-center overflow">
     <div class="mb-4">
-        <h1 class="text-black text-lg">Nuevo Grupo</h1>
+        <h1 class="text-black text-lg">Modificar Grupo</h1>
     </div>
     <form class="mb-8 flex flex-col" (ngSubmit)="ModificarGrupo()" #form="ngForm">
         <div class="border border-dashed border-gray-400 w-fll h-24 mt-2 text-gray-600 flex justify-center items-center cursor-pointer mb-2">
-            Imagen
+            Imagen (logica no implementada)
         </div>
         <label class="w-10 text-base px-4 py-2">Titulo</label>
-        <input [(ngModel)]="this.grupo.Titulo" [ngModelOptions]="{standalone: true}" type="text" class="text-base px-4 py-2 mb-4  bg-white rounded border border-gray-400 focus:outline-none focus:border-gray-600" placeholder="Titulo">
+        <input [(ngModel)]="this.grupo.Titulo" [ngModelOptions]="{standalone: true}" type="text" class="text-base px-4 py-2 mb-4  bg-white rounded border border-gray-400 focus:outline-none focus:border-gray-600" placeholder="Titulo" required>
         <label class="w-10 text-base px-4 py-2">Descripcion</label>
         <input [(ngModel)]="this.grupo.Descripcion" [ngModelOptions]="{standalone: true}" type="text" class="text-base px-4 py-2 mb-4  bg-white rounded border border-gray-400 focus:outline-none focus:border-gray-600" placeholder="Descripcion">
         <div class="flex justify-around mt-4">

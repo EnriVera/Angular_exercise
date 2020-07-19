@@ -12,7 +12,10 @@ import { SweeNotification } from 'src/app/resource/notification';
 export class PagesGroupComponent implements OnInit {
   CrearGrupo: boolean = false;
   PlaceholderGrupo: boolean = false;
+  mostrarGrupo: boolean = false;
+  mostrarMensage: boolean = false;
   person: Person = new Person();
+
   sweenotificacion: SweeNotification = new SweeNotification();
   constructor(
     public serviceperson: ServicePersonService,
@@ -26,19 +29,22 @@ export class PagesGroupComponent implements OnInit {
   }
 
   ObtnerPerson() {
-    this.PlaceholderGrupo = false;
+    this.mostrarGrupo = false;
+    this.mostrarMensage = false;
+    this.PlaceholderGrupo = true;
     this.serviceperson.ObtnerUnaPerson(this.person.ID).subscribe((value) => {
+      if(value.Grupo.length == 0) this.mostrarMensage = true
       this.person = value;
-      this.person.Grupo.length == 0
-        ? (this.PlaceholderGrupo = false)
-        : (this.PlaceholderGrupo = true);
+
+      this.PlaceholderGrupo = false;
+      this.mostrarGrupo = true;
     });
   }
 
   BuscarGrupo(IDGrupo: number) {
     this.serviceGrupoPerson.PostGrupo(IDGrupo, this.person.ID).subscribe(
       () => {
-        this.sweenotificacion.SuccessModel('Se agrego el nuevo grupo');
+        this.sweenotificacion.SuccessModel('Se a agrego el nuevo grupo');
         this.ObtnerPerson();
       },
       () => this.sweenotificacion.ErrorModel('Id del grupo incorrecto o ya esta en el grupo')
